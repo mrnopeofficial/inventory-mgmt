@@ -1,0 +1,85 @@
+<?php
+
+use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BrandController;
+
+//Need to add this file if using Eloquent
+use App\Models\User;
+use App\Models\Brand;
+
+//Need to add this file if using query builder
+use Illuminate\Support\Facades\DB;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    echo "This is home page";
+    //return view('welcome');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+// ->middleware('check');
+
+//Laravel 7 method
+// Route::get('/contact', 'ContactController@index');
+// Route::get('/contact', [ContactController::class, 'index']);
+
+Route::get('/contact', [ContactController::class, 'index'])->name('con');
+
+// CATEGORY CONTROLLER (ROUTE)
+Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
+// Add Category Controller (Route)
+Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('add.category');
+// Edit Category Controller (Route)
+Route::get('/category/edit/{id}', [CategoryController::class, 'Edit']);
+// Update Category Controller (Route)
+Route::post('/category/update/{id}', [CategoryController::class, 'Update']);
+// Soft Delete Category Controller (Route)
+Route::get('/category/softdelete/{id}', [CategoryController::class, 'SoftDelete']);
+// Restore Category Controller (Route)
+Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']);
+// Restore Category Controller (Route)
+Route::get('/category/delete/{id}', [CategoryController::class, 'Delete']);
+
+// BRAND CONTROLLER (ROUTE)
+Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
+// Add Brand Controller (Route)
+Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('add.brand');
+// Edit Brand Controller (Route)
+Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']);
+// Update Brand Controller (Route)
+Route::post('/brand/update/{id}', [BrandController::class, 'Update']);
+// Soft Delete Category Controller (Route)
+Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
+
+// MULTI IMAGE CONTROLLER (ROUTE)
+Route::get('/multi/image', [BrandController::class, 'MultiPic'])->name('multi.image');
+// Add Brand Controller (Route)
+Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('add.image');
+
+
+Route::get('/help', function () {
+    echo "This is help page";
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+
+        //Eloquent technique
+        // $users = User::all();
+
+        //Query Builder technique
+        $users = DB::table('users')->get();
+        return view('dashboard', compact('users'));
+    })->name('dashboard');
+});
