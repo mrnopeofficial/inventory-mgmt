@@ -32,6 +32,10 @@ Route::get('/about', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->name('con');
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 // CATEGORY CONTROLLER (ROUTE)
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
 // Add Category Controller (Route)
@@ -79,7 +83,7 @@ Route::middleware([
         // $users = User::all();
 
         //Query Builder technique
-        $users = DB::table('users')->get();
-        return view('dashboard', compact('users'));
+        // $users = DB::table('users')->get();
+        return view('admin.index');
     })->name('dashboard');
 });
