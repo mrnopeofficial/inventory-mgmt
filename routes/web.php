@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\UserController;
 
 //Need to add this file if using Eloquent
 use App\Models\User;
@@ -87,3 +88,6 @@ Route::middleware([
         return view('admin.index');
     })->name('dashboard');
 });
+
+// USER DASHBOARD CONTROLLER (ROUTE)
+Route::get('/user/logout', [UserController::class, 'Logout'])->name('user.logout');
