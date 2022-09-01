@@ -2,7 +2,7 @@
     <div id="sidebar" class="sidebar sidebar-with-footer">
         <!-- Aplication Brand -->
         <div class="app-brand">
-            <a href="/index.html">
+            <a href="/dashboard">
                 <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33" viewBox="0 0 30 33">
                     <g fill="none" fill-rule="evenodd">
                         <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
@@ -28,19 +28,33 @@
                     <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
                         <div class="sub-menu">
 
-
-
                             <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
-                                    <span class="nav-text">Ecommerce</span>
+                                <a class="sidenav-item-link" href="{{route('admin.slider')}}">
+                                    <span class="nav-text">Slider</span>
 
                                 </a>
                             </li>
 
+                            <li>
+                                <a class="sidenav-item-link" href="index.html">
+                                    <span class="nav-text">About</span>
 
+                                </a>
+                            </li>
 
+                            <li>
+                                <a class="sidenav-item-link" href="index.html">
+                                    <span class="nav-text">Portfolio</span>
 
+                                </a>
+                            </li>
 
+                            <li>
+                                <a class="sidenav-item-link" href="{{route('all.brand')}}">
+                                    <span class="nav-text">Brand</span>
+
+                                </a>
+                            </li>
 
                             <li>
                                 <a class="sidenav-item-link" href="analytics.html">

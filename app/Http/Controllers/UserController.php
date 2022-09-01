@@ -8,9 +8,5 @@ use Auth;
 
 class UserController extends Controller
 {
-    public function Logout()
-    {
-        Auth::logout();
-        return Redirect()->route('login');
-    }
+    //Reserve for user if any function need to be add
 }

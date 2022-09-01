@@ -166,7 +166,7 @@
                                     </li>
 
                                     <li class="dropdown-footer">
-                                        <a href="{{route('user.logout')}}"> <i class="mdi mdi-logout"></i> Log Out </a>
+                                        <a href="{{route('admin.logout')}}"> <i class="mdi mdi-logout"></i> Log Out </a>
                                     </li>
                                 </ul>
                             </li>

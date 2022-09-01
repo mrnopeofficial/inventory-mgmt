@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 //Need to add this file if using Eloquent
 use App\Models\User;
@@ -14,7 +15,8 @@ use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
-    return view('home');
+    $brands = DB::table('brands')->get();
+    return view('home', compact('brands'));
 });
 
 Route::get('/home', function () {
@@ -39,16 +41,22 @@ Route::get('/email/verify', function () {
 
 // CATEGORY CONTROLLER (ROUTE)
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
+
 // Add Category Controller (Route)
 Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('add.category');
+
 // Edit Category Controller (Route)
 Route::get('/category/edit/{id}', [CategoryController::class, 'Edit']);
+
 // Update Category Controller (Route)
 Route::post('/category/update/{id}', [CategoryController::class, 'Update']);
+
 // Soft Delete Category Controller (Route)
 Route::get('/category/softdelete/{id}', [CategoryController::class, 'SoftDelete']);
+
 // Restore Category Controller (Route)
 Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']);
+
 // Restore Category Controller (Route)
 Route::get('/category/delete/{id}', [CategoryController::class, 'Delete']);
 
@@ -67,7 +75,6 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 Route::get('/multi/image', [BrandController::class, 'MultiPic'])->name('multi.image');
 // Add Brand Controller (Route)
 Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('add.image');
-
 
 Route::get('/help', function () {
     echo "This is help page";
@@ -89,5 +96,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-// USER DASHBOARD CONTROLLER (ROUTE)
-Route::get('/user/logout', [UserController::class, 'Logout'])->name('user.logout');
+// ADMIN DASHBOARD CONTROLLER (ROUTE)
+Route::get('/dashboard/slider', [AdminController::class, 'AdminSlider'])->name('admin.slider');
+Route::get('/user/logout', [AdminController::class, 'Logout'])->name('admin.logout');
