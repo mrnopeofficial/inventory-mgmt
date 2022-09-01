@@ -98,4 +98,6 @@ Route::middleware([
 
 // ADMIN DASHBOARD CONTROLLER (ROUTE)
 Route::get('/dashboard/slider', [AdminController::class, 'AdminSlider'])->name('admin.slider');
-Route::get('/user/logout', [AdminController::class, 'Logout'])->name('admin.logout');
+Route::get('/dashboard/slider/add', [AdminController::class, 'AddSlider'])->name('add.slider');
+Route::post('/dashboard/slider/store', [AdminController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
