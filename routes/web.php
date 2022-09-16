@@ -4,8 +4,8 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 //Need to add this file if using Eloquent
 use App\Models\User;
@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    return view('home', compact('brands'));
+    $abouts = DB::table('abouts')->first();
+    return view('home', compact('brands','abouts'));
 });
 
 Route::get('/home', function () {
@@ -97,7 +98,29 @@ Route::middleware([
 });
 
 // ADMIN DASHBOARD CONTROLLER (ROUTE)
+
+//Slider
 Route::get('/dashboard/slider', [AdminController::class, 'AdminSlider'])->name('admin.slider');
-Route::get('/dashboard/slider/add', [AdminController::class, 'AddSlider'])->name('add.slider');
-Route::post('/dashboard/slider/store', [AdminController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/slider/add', [AdminController::class, 'AddSlider'])->name('add.slider');
+Route::post('slider/store', [AdminController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/slider/edit/{id}', [AdminController::class, 'Edit']);
+Route::post('/slider/update/{id}', [AdminController::class, 'Update']);
+Route::get('slider/delete/{id}', [AdminController::class, 'Delete']);
+
+//About
+Route::get('/dashboard/about', [AdminController::class, 'AdminAbout'])->name('admin.about');
+Route::get('/about/add', [AdminController::class, 'AddAbout'])->name('add.about');
+Route::post('about/store', [AdminController::class, 'StoreAbout'])->name('store.about');
+Route::get('/about/edit/{id}', [AdminController::class, 'EditAbout']);
+Route::post('/about/update/{id}', [AdminController::class, 'UpdateAbout']);
+Route::get('about/delete/{id}', [AdminController::class, 'DeleteAbout']);
+
+//Service
+Route::get('/dashboard/service', [AdminController::class, 'AdminService'])->name('admin.service');
+Route::get('/service/add', [AdminController::class, 'AddService'])->name('add.service');
+Route::post('service/store', [AdminController::class, 'StoreService'])->name('store.service');
+Route::get('/service/edit/{id}', [AdminController::class, 'EditService']);
+Route::post('/service/update/{id}', [AdminController::class, 'UpdateService']);
+Route::get('service/delete/{id}', [AdminController::class, 'DeleteService']);
+
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');

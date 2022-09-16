@@ -36,7 +36,7 @@
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="{{route('admin.about')}}">
                                     <span class="nav-text">About</span>
 
                                 </a>
@@ -57,10 +57,8 @@
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="analytics.html">
-                                    <span class="nav-text">Analytics</span>
-
-                                    <span class="badge badge-success">new</span>
+                                <a class="sidenav-item-link" href="{{route('admin.service')}}">
+                                    <span class="nav-text">Service</span>
 
                                 </a>
                             </li>

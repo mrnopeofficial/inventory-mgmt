@@ -42,7 +42,7 @@
 
                             <!-- Existing Brand Image -->
                             <div class="form-group">
-                                <img src="{{asset($brands->brand_image)}}" style="width:200px; height: 200px;">
+                                <img src="{{asset($brands->brand_image)}}" style="max-width:600px; max-height: 600px;">
 
                             </div>
                             <button type="submit" class="btn btn-primary">Update Brand</button>
