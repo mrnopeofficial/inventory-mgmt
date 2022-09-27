@@ -24,7 +24,7 @@
 
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 
 
     <!-- FAVICON -->
@@ -136,26 +136,26 @@
                             <!-- User Account -->
                             <li class="dropdown user-menu">
                                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <img src="{{asset('backend/assets/img/user/user.png')}}" class="user-image" alt="User Image" />
-                                    <span class="d-none d-lg-inline-block">Syahmi</span>
+                                    <img src="{{ Auth::user()->profile_photo_url }}" class="user-image" alt="User Image" />
+                                    <span class="d-none d-lg-inline-block">{{Auth::user()->name}}</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <!-- User image -->
                                     <li class="dropdown-header">
-                                        <img src="{{asset('backend/assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
+                                        <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle" alt="User Image" />
                                         <div class="d-inline-block">
-                                            Syahmi <small class="pt-1">syahmim4a1@gmail.com</small>
+                                            {{Auth::user()->name}} <small class="pt-1">{{Auth::user()->email}}</small>
                                         </div>
                                     </li>
 
                                     <li>
-                                        <a href="profile.html">
+                                        <a href="{{route('admin.updateprofile')}}">
                                             <i class="mdi mdi-account"></i> My Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="email-inbox.html">
-                                            <i class="mdi mdi-email"></i> Message
+                                        <a href="{{route('admin.changepassword')}}">
+                                            <i class="mdi mdi-email"></i> Change Password
                                         </a>
                                     </li>
                                     <li>
@@ -223,6 +223,27 @@
     <script src="{{asset('backend/assets/js/map.js')}}"></script>
     <script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
+    
+    <!-- Toastr Notification -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if(Session::has('message')) {
+            var type = "{{Session::get('alert-type','info')}}"
+            switch (type) {
+                case 'info':
+                    toastr.info("{{Session::get('message')}}");
+                case 'success':
+                    toastr.success("{{Session::get('message')}}");
+                case 'warning':
+                    toastr.warning("{{Session::get('message')}}");
+                case 'error':
+                    toastr.error("{{Session::get('message')}}");
+
+                    break;
+            }
+        }
+        @endif
+    </script> -->
 
 
 

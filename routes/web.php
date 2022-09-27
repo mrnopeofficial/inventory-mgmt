@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 //Need to add this file if using Eloquent
 use App\Models\User;
 use App\Models\Brand;
+use App\Models\Multipic;
 
 //Need to add this file if using query builder
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
     $abouts = DB::table('abouts')->first();
-    return view('home', compact('brands','abouts'));
+    $multipics = Multipic::all();
+    return view('home', compact('brands','abouts','multipics'));
 });
 
 Route::get('/home', function () {
@@ -97,6 +99,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
+// PORTFOLIO CONTROLLER (ROUTE)
+Route::get('/portfolio', [UserController::class, 'Portfolio'])->name('portfolio');
+
+// CONTACT CONTROLLER (ROUTE)
+Route::get('/contact', [UserController::class, 'Contact'])->name('contact');
+Route::post('contact/form', [UserController::class, 'StoreContactForm'])->name('contact.form');
+
 // ADMIN DASHBOARD CONTROLLER (ROUTE)
 
 //Slider
@@ -123,4 +132,19 @@ Route::get('/service/edit/{id}', [AdminController::class, 'EditService']);
 Route::post('/service/update/{id}', [AdminController::class, 'UpdateService']);
 Route::get('service/delete/{id}', [AdminController::class, 'DeleteService']);
 
+//Contact
+Route::get('/dashboard/contact', [AdminController::class, 'AdminContact'])->name('admin.contact');
+Route::get('/contact/add', [AdminController::class, 'AddContact'])->name('add.contact');
+Route::post('contact/store', [AdminController::class, 'StoreContact'])->name('store.contact');
+Route::get('/contact/edit/{id}', [AdminController::class, 'EditContact']);
+Route::post('/contact/update/{id}', [AdminController::class, 'UpdateContact']);
+Route::get('contact/delete/{id}', [AdminController::class, 'DeleteContact']);
+Route::get('/dashboard/contactform', [AdminController::class, 'AdminContactForm'])->name('admin.contactform');
+Route::get('contactform/delete/{id}', [AdminController::class, 'DeleteContactForm']);
+
+Route::get('/dashboard/profile', [AdminController::class, 'UpdateProfile'])->name('admin.updateprofile');
+Route::post('profile/save', [AdminController::class, 'SaveProfile'])->name('admin.saveprofile');
+
+Route::get('/dashboard/password', [AdminController::class, 'ChangePassword'])->name('admin.changepassword');
+Route::post('password/update', [AdminController::class, 'UpdatePassword'])->name('admin.updatepassword');
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');

@@ -6,12 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\About;
 use App\Models\Service;
+use App\Models\Contact;
+use App\Models\User;
+use App\Models\ContactForm;
 use Auth;
 use Image;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
+    
+    public function Logout()
+    {
+        Auth::logout();
+        return Redirect()->route('login');
+    }
+
     public function AdminSlider()
     {
         $sliders = Slider::latest()->get();
@@ -112,9 +124,9 @@ class AdminController extends Controller
 
             return Redirect()->back()->with('success', 'Slider updated successfully!');
         }
-        
+
         //Function to update title & description
-        elseif($title && $description) {
+        elseif ($title && $description) {
             Slider::find($id)->update([
                 'title' => $request->title,
                 'description' => $request->description,
@@ -122,7 +134,6 @@ class AdminController extends Controller
             ]);
 
             return Redirect()->back()->with('success', 'Slider updated successfully!');
-
         }
 
         //Function to update slider title only 
@@ -155,36 +166,33 @@ class AdminController extends Controller
     {
         return view('admin.about.create');
     }
-    
-    public function StoreAbout(Request $request) {
+
+    public function StoreAbout(Request $request)
+    {
         About::insert([
-            'title'=> $request->title,
-            'short_desc'=> $request->short_desc,
-            'long_desc'=> $request->long_desc,
-            'created_at'=> Carbon::now()
+            'title' => $request->title,
+            'short_desc' => $request->short_desc,
+            'long_desc' => $request->long_desc,
+            'created_at' => Carbon::now()
         ]);
         return Redirect()->route('admin.about')->with('success', 'About added successfully!');
     }
 
-    public function EditAbout($id){
+    public function EditAbout($id)
+    {
         $about = About::find($id);
         return view('admin.about.edit', compact('about'));
     }
 
-    public function UpdateAbout(Request $request, $id){
+    public function UpdateAbout(Request $request, $id)
+    {
         About::find($id)->update([
-            'title'=> $request->title,
-            'short_desc'=> $request->short_desc,
-            'long_desc'=> $request->long_desc,
-            'created_at'=> Carbon::now()
+            'title' => $request->title,
+            'short_desc' => $request->short_desc,
+            'long_desc' => $request->long_desc,
+            'created_at' => Carbon::now()
         ]);
         return Redirect()->route('admin.about')->with('success', 'About updated successfully!');
-    }
-
-    public function Logout()
-    {
-        Auth::logout();
-        return Redirect()->route('login');
     }
 
     public function DeleteAbout($id)
@@ -203,26 +211,29 @@ class AdminController extends Controller
     {
         return view('admin.service.create');
     }
-    
-    public function StoreService(Request $request) {
+
+    public function StoreService(Request $request)
+    {
         Service::insert([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'created_at'=> Carbon::now()
+            'title' => $request->title,
+            'description' => $request->description,
+            'created_at' => Carbon::now()
         ]);
         return Redirect()->route('admin.service')->with('success', 'Service added successfully!');
     }
 
-    public function EditService($id){
+    public function EditService($id)
+    {
         $service = About::find($id);
         return view('admin.service.edit', compact('service'));
     }
 
-    public function UpdateService(Request $request, $id){
+    public function UpdateService(Request $request, $id)
+    {
         Service::find($id)->update([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'created_at'=> Carbon::now()
+            'title' => $request->title,
+            'description' => $request->description,
+            'created_at' => Carbon::now()
         ]);
         return Redirect()->route('admin.service')->with('success', 'Service updated successfully!');
     }
@@ -231,5 +242,108 @@ class AdminController extends Controller
     {
         $delete = Service::find($id)->Delete();
         return Redirect()->back()->with('success', 'Service deleted successfully!');
+    }
+
+    public function AdminContact()
+    {
+        $contacts = Contact::all();
+        return view('admin.contact.index',compact('contacts'));
+    }
+
+    public function AddContact(){
+        return view('admin.contact.create');
+    }
+
+    public function StoreContact(Request $request)
+    {
+        Contact::insert([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'created_at' => Carbon::now()
+        ]);
+        return Redirect()->route('admin.contact')->with('success', 'Contact added successfully!');
+    }
+
+    public function EditContact($id)
+    {
+        $contact = Contact::find($id);
+        return view('admin.contact.edit', compact('contact'));
+    }
+
+    public function UpdateContact(Request $request, $id)
+    {
+        Contact::find($id)->update([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'created_at' => Carbon::now()
+        ]);
+        return Redirect()->route('admin.contact')->with('success', 'Contact updated successfully!');
+    }
+
+    public function DeleteContact($id)
+    {
+        $delete = Contact::find($id)->Delete();
+        return Redirect()->back()->with('success', 'Contact deleted successfully!');
+    }
+
+    public function AdminContactForm()
+    {
+        $contactforms = ContactForm::all();
+        return view('admin.contact.form',compact('contactforms'));
+    }
+
+    public function DeleteContactForm($id)
+    {
+        $delete = ContactForm::find($id)->Delete();
+        return Redirect()->back()->with('success', 'Message deleted successfully!');
+    }
+
+    public function ChangePassword()
+    {
+        return view('admin.body.change_password');
+    }
+
+    public function UpdatePassword(Request $request)
+    {
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+        $hashedPassword = Auth::user()->password;
+        if(Hash::check($request->oldpassword,$hashedPassword)){
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login')->with('success', 'Password changed successfully');
+        } else {
+            return redirect()->back()->with('error', 'Password change error');
+        }
+    }
+
+    public function UpdateProfile()
+    {
+        if(Auth::user()){
+            $user = User::find(Auth::user()->id);
+            if($user) {
+                return view('admin.body.update_profile',compact('user'));
+            }
+        }
+    }
+
+    public function SaveProfile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        if($user) {
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->save();
+
+            return Redirect()->back()->with('success', 'Profile update successfully');
+        } else {
+            return Redirect()->back();
+        }
     }
 }

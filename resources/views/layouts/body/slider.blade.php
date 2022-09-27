@@ -8,7 +8,7 @@ $sliders = DB::table('sliders')->get();
 
         <div class="carousel-inner" role="listbox">
 
-            @foreach($sliders as $key => $slider)    
+            @foreach($sliders as $key => $slider)
             <!-- Slide 1 -->
             <div class="carousel-item {{$key == 0 ? 'active' : ''}}" style="background-image: url({{asset($slider->image)}});">
                 <div class="carousel-container">
