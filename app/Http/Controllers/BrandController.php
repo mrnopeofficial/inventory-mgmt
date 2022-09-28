@@ -57,7 +57,11 @@ class BrandController extends Controller
             'brand_image' => $final_image,
             'created_at' => Carbon::now()
         ]);
-        return Redirect()->back()->with('success', 'Brand inserted successfully!');
+        $notification = array(
+            'message' => 'Brand Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     public function Edit($id)
@@ -99,7 +103,11 @@ class BrandController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            return Redirect()->back()->with('success', 'Brand updated successfully!');
+            $notification = array(
+                'message' => 'Brand Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return Redirect()->back()->with($notification);
         }
 
         //Function to update brand name only 
@@ -108,7 +116,11 @@ class BrandController extends Controller
                 'brand_name' => $request->brand_name,
                 'created_at' => Carbon::now()
             ]);
-            return Redirect()->back()->with('success', 'Brand updated successfully!');
+            $notification = array(
+                'message' => 'Brand Updated Successfully',
+                'alert-type' => 'success'
+            );
+            return Redirect()->back()->with($notification);
         }
     }
 
@@ -119,7 +131,11 @@ class BrandController extends Controller
         unlink($old_image);
 
         Brand::find($id)->delete();
-        return Redirect()->back()->with('success', 'Brand deleted successfully!');
+        $notification = array(
+            'message' => 'Brand Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     public function MultiPic()
@@ -144,6 +160,10 @@ class BrandController extends Controller
                 'created_at' => Carbon::now()
             ]);
         } //end of for loop
-        return Redirect()->back()->with('success', 'Multi image inserted successfully!');
+        $notification = array(
+            'message' => 'Multi Image Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 }
