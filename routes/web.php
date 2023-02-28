@@ -76,7 +76,7 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 
 // MULTI IMAGE CONTROLLER (ROUTE)
 Route::get('/multi/image', [BrandController::class, 'MultiPic'])->name('multi.image');
-// Add Brand Controller (Route)
+// Add Multi Image Controller (Route)
 Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('add.image');
 
 Route::get('/help', function () {
@@ -102,6 +102,10 @@ Route::middleware([
 // PORTFOLIO CONTROLLER (ROUTE)
 Route::get('/portfolio', [UserController::class, 'Portfolio'])->name('portfolio');
 
+// SERVICE CONTROLLER (ROUTE)
+// Route::get('/passion', [UserController::class, 'Passion'])->name('passion');
+Route::get('/passion/detail/{id}', [UserController::class, 'PassionDetail']);
+
 // CONTACT CONTROLLER (ROUTE)
 Route::get('/contact', [UserController::class, 'Contact'])->name('contact');
 Route::post('contact/form', [UserController::class, 'StoreContactForm'])->name('contact.form');
@@ -123,6 +127,14 @@ Route::post('about/store', [AdminController::class, 'StoreAbout'])->name('store.
 Route::get('/about/edit/{id}', [AdminController::class, 'EditAbout']);
 Route::post('/about/update/{id}', [AdminController::class, 'UpdateAbout']);
 Route::get('about/delete/{id}', [AdminController::class, 'DeleteAbout']);
+
+//Passion
+Route::get('/dashboard/passion', [AdminController::class, 'AdminPassion'])->name('admin.passion');
+Route::get('/passion/add', [AdminController::class, 'AddPassion'])->name('add.passion');
+Route::post('passion/store', [AdminController::class, 'StorePassion'])->name('store.passion');
+Route::get('/passion/edit/{id}', [AdminController::class, 'EditPassion']);
+Route::post('/passion/update/{id}', [AdminController::class, 'UpdatePassion']);
+Route::get('passion/delete/{id}', [AdminController::class, 'DeletePassion']);
 
 //Service
 Route::get('/dashboard/service', [AdminController::class, 'AdminService'])->name('admin.service');

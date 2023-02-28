@@ -1,5 +1,5 @@
 @php
-$sliders = DB::table('sliders')->get();
+$passions = DB::table('passions')->get();
 @endphp
 
 <!-- ======= Hero Section ======= -->
@@ -8,14 +8,14 @@ $sliders = DB::table('sliders')->get();
 
         <div class="carousel-inner" role="listbox">
 
-            @foreach($sliders as $key => $slider)
-            <!-- Slide 1 -->
-            <div class="carousel-item {{$key == 0 ? 'active' : ''}}" style="background-image: url({{asset($slider->image)}});">
+            @foreach($passions as $key => $passion)
+            <!-- Slide -->
+            <div class="carousel-item {{$key == 0 ? 'active' : ''}}" style="background-image: url({{asset($passion->image)}});">
                 <div class="carousel-container">
                     <div class="carousel-content animate__animated animate__fadeInUp">
-                        <h2>{{$slider->title}}</h2>
-                        <p>{{$slider->description}}</p>
-                        <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                        <h2>{{$passion->title}}</h2>
+                        <p>{{$passion->description}}</p>
+                        <div class="text-center"><a href="{{url('passion/detail/'.$passion->id)}}" class="btn-get-started">Read More</a></div>
                     </div>
                 </div>
             </div>

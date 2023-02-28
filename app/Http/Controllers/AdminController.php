@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\About;
 use App\Models\Service;
+use App\Models\Passion;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\ContactForm;
@@ -41,7 +42,7 @@ class AdminController extends Controller
 
         // Storing Image using Image Intervention
         $image_id_generator = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(1920, 1088)->save('image/slider/' . $image_id_generator);
+        Image::make($image)->save('image/slider/' . $image_id_generator);
         $final_image = 'image/slider/' . $image_id_generator;
 
         Slider::insert([
@@ -345,5 +346,182 @@ class AdminController extends Controller
         } else {
             return Redirect()->back();
         }
+    }
+
+    //PASSION CONTROLLER
+    public function AdminPassion()
+    {
+        $passions = Passion::latest()->get();
+        return view('admin.passion.index', compact('passions'));
+    }
+
+    public function AddPassion()
+    {
+        return view('admin.passion.create');
+    }
+
+    public function StorePassion(Request $request)
+    {
+        $image = $request->file('image');
+
+        // Storing Image using Image Intervention
+        $image_id_generator = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->save('image/passion/' . $image_id_generator);
+        $final_image = 'image/passion/' . $image_id_generator;
+
+        Passion::insert([
+            'title' => $request->title,
+            'description' => $request->description,
+            'story' => $request->story,
+            'image' => $final_image,
+            'created_at' => Carbon::now()
+        ]);
+        return Redirect()->route('admin.passion')->with('success', 'Passion added successfully!');
+    }
+
+    public function EditPassion($id)
+    {
+        $passions = Passion::find($id);
+        return view('admin.passion.edit', compact('passions'));
+    }
+
+    public function UpdatePassion(Request $request, $id)
+    {
+
+        //Assigning unique ID to Passion image
+        $old_image = $request->old_image;
+        $image = $request->file('image');
+        $title = $request->title;
+        $description = $request->description;
+        $story = $request->story;
+
+        //Function to update title, description, story and image
+        if ($image) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/passion/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Passion::find($id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'story' => $request->story,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+
+        //Function to update title, description and image
+        if ($image && $title && $description) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/passion/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Passion::find($id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+
+        //Function to update title, story and image
+        if ($image && $story && $description) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/passion/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Passion::find($id)->update([
+                'title' => $request->title,
+                'story' => $request->story,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+
+        //Function to update tittle & image
+        elseif ($image && $title) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/passion/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Passion::find($id)->update([
+                'title' => $request->title,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+
+        //Function to update description & image
+        elseif ($image && $description) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/passion/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Passion::find($id)->update([
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+
+        //Function to update title or description or story
+        elseif ($title && $description && $story) {
+            Passion::find($id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'story' => $request->story,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+
+        //Function to update passion title only 
+        else {
+            Passion::find($id)->update([
+                'title' => $request->title,
+                'created_at' => Carbon::now()
+            ]);
+            return Redirect()->back()->with('success', 'Passion updated successfully!');
+        }
+    }
+
+    public function DeletePassion($id)
+    {
+        $image = Passion::find($id);
+        $old_image = $image->image;
+        unlink($old_image);
+
+        Passion::find($id)->delete();
+        return Redirect()->back()->with('success', 'Passion deleted successfully!');
     }
 }

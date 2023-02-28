@@ -1,4 +1,6 @@
 @extends('layouts.master_home')
+
+<!-- ======= Slider Section ======= -->
 @include('layouts.body.slider')
 
 @section('home_content')
@@ -7,7 +9,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>About Us</strong></h2>
+            <h2>About Me</strong></h2>
         </div>
 
         <div class="row content">
@@ -19,54 +21,14 @@
                 <p>
                     {{$abouts->long_desc}}
                 </p>
-                <!--
-                <ul>
-                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-                </ul>
-                <p class="font-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                </p> -->
             </div>
         </div>
 
     </div>
 </section><!-- End About Us Section -->
 
-<!-- ======= Services Section ======= -->
-
-@php
-$services = DB::table('services')->get();
-@endphp
-
-<section id="services" class="services section-bg">
-    <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2>Services</strong></h2>
-            <p>This is what we provide to you!</p>
-        </div>
-
-        <!-- insert data from DB(service) here -->
-        <div class="row">
-            @foreach($services as $service)    
-            <div class="col-lg-4 col-md-6 align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-box iconbox-blue">
-                    <h4><a href="">{{$service->title}}</a></h4>
-                    <p>{{$service->description}}</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        
-
-    </div>
-</section><!-- End Services Section -->
-
 <!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio">
+<section id="portfolio" class="portfolio section-bg">
     <div class="container">
 
         <div class="section-title" data-aos="fade-up">

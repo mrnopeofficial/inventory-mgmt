@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Inventorium Shop</title>
+    <title>Syahmi</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -28,13 +28,6 @@
 
     <!-- Template Main CSS File -->
     <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Company - v2.1.0
-  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -52,7 +45,7 @@
     <script src="{{asset('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
-    <script src="{{asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="{{asset('frontend/assets/vendor/jquery-sticky/jquery.sticky.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/venobox/venobox.min.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
