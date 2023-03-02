@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Passion Story</label>
-                    <textarea name="story" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="story" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
                 </div>
 
                 <div class="form-group">

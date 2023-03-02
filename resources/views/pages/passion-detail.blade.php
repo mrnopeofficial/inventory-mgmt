@@ -29,9 +29,11 @@
 
         <div class="portfolio-description">
           <h2>{{$passions->title}}</h2>
+          <div style="white-space: pre-line; text-align: justify;"> 
           <p>
             {{$passions->story}}
           </p>
+          </div>
         </div>
 
       </div>

@@ -8,11 +8,12 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li><a href="./">Home</a></li>
+                <li><a href="http://127.0.0.1:8000">Home</a></li>
                 <li><a href="#about-us">About Me</a></li>
                 <li><a href="{{route('portfolio')}}">Portfolio</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
-                <li><a href="{{route('login')}}">Login</a></li>
+                <li><a href="{{route('login')}}">Login</a></li> 
+                <!-- Tukar route and buang login for security -->
 
             </ul>
         </nav><!-- .nav-menu -->

@@ -38,8 +38,8 @@
                             <tr>
                                 <th scope="row">{{$i++}}</th>
                                 <td>{{$passion->title}}</td>
-                                <td>{{$passion->description}}</td>
-                                <td>{{$passion->story}}</td>
+                                <td>{{substr($passion->description, 0, 25)}}...</td>
+                                <td>{{substr($passion->story, 0, 80)}}...</td>
                                 <td><img src="{{asset($passion->image)}}" style="max-height: 60px; max-width: 60px;" alt=""></td>
 
                                 <td>
