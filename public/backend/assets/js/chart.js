@@ -846,12 +846,12 @@ $(document).ready(function() {
     var myDoughnutChart = new Chart(doughnut, {
       type: "doughnut",
       data: {
-        labels: ["completed", "unpaid", "pending", "canceled"],
+        labels: ["Web Development", "Handling Client", "Solving Problem", "Software Testing", "Content Development"],
         datasets: [
           {
-            label: ["completed", "unpaid", "pending", "canceled"],
-            data: [4100, 2500, 1800, 2300],
-            backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402"],
+            label: ["Web Development", "Handling Client", "Solving Problem", "Software Testing", "Content Development"],
+            data: [40, 15, 20, 10, 15],
+            backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402", "#f51b4a"],
             borderWidth: 1
             // borderColor: ['#4c84ff','#29cc97','#8061ef','#fec402']
             // hoverBorderColor: ['#4c84ff', '#29cc97', '#8061ef', '#fec402']
@@ -868,10 +868,10 @@ $(document).ready(function() {
         tooltips: {
           callbacks: {
             title: function(tooltipItem, data) {
-              return "Order : " + data["labels"][tooltipItem[0]["index"]];
+              return data["labels"][tooltipItem[0]["index"]];
             },
             label: function(tooltipItem, data) {
-              return data["datasets"][0]["data"][tooltipItem["index"]];
+              return data["datasets"][0]["data"][tooltipItem["index"]] + "%";
             }
           },
           titleFontColor: "#888",

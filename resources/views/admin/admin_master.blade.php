@@ -28,7 +28,7 @@
 
 
     <!-- FAVICON -->
-    <link href="{{asset('backend/assets/img/favicon.png')}}" rel="shortcut icon" />
+    <link href="{{asset('frontend/assets/img/favicon.png')}}" rel="shortcut icon" />
 
     <script src="{{asset('backend/assets/plugins/nprogress/nprogress.js')}}"></script>
 </head>
@@ -64,10 +64,9 @@
                     <!-- search form -->
                     <div class="search-form d-none d-lg-inline-block">
                         <div class="input-group">
-                            <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                                <i class="mdi mdi-magnify"></i>
-                            </button>
-                            <input type="text" name="query" id="search-input" class="form-control" placeholder="'button', 'chart' etc." autofocus autocomplete="off" />
+                            <a href="http://127.0.0.1:8000/" target="_blank"><button class="btn-dark rounded" style="padding:5px 10px;">Home Page</button></a>
+                            <button type="button" name="search" id="search-btn" class="btn btn-flat"></button>
+                            <input type="hidden" name="query" id="search-input" class="form-control" />
                         </div>
                         <div id="search-results-container">
                             <ul id="search-results"></ul>

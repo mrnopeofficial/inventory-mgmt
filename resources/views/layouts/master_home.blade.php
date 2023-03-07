@@ -15,6 +15,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -25,6 +26,9 @@
     <link href="{{asset('frontend/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/vendor/aos/aos.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+
+    <!-- Chart Files -->
+    <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}">
 
     <!-- Template Main CSS File -->
     <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet">
@@ -51,6 +55,12 @@
     <script src="{{asset('frontend/assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/assets/vendor/aos/aos.js')}}"></script>
+
+    <!-- Chart Files -->
+    <script src="{{asset('backend/assets/js/sleek.js')}}"></script>
+    <script src="{{asset('backend/assets/js/chart.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/charts/Chart.min.js')}}"></script>
+    <script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
     <!-- Template Main JS File -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>

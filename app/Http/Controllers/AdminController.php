@@ -7,6 +7,7 @@ use App\Models\Slider;
 use App\Models\About;
 use App\Models\Service;
 use App\Models\Passion;
+use App\Models\Portfolio;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\ContactForm;
@@ -523,5 +524,186 @@ class AdminController extends Controller
 
         Passion::find($id)->delete();
         return Redirect()->back()->with('success', 'Passion deleted successfully!');
+    }
+
+    //portfolio CONTROLLER
+    public function AdminPortfolio()
+    {
+        $portfolios = Portfolio::latest()->get();
+        return view('admin.portfolio.index', compact('portfolios'));
+    }
+
+    public function AddPortfolio()
+    {
+        return view('admin.portfolio.create');
+    }
+
+    public function StorePortfolio(Request $request)
+    {
+        $image = $request->file('image');
+
+        // Storing Image using Image Intervention
+        $image_id_generator = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->save('image/portfolio/' . $image_id_generator);
+        $final_image = 'image/portfolio/' . $image_id_generator;
+
+        Portfolio::insert([
+            'name' => $request->name,
+            'link' => $request->link,
+            'task' => $request->task,
+            'result' => $request->result,
+            'image' => $final_image,
+            'created_at' => Carbon::now()
+        ]);
+        return Redirect()->route('admin.portfolio')->with('success', 'Portfolio added successfully!');
+    }
+
+    public function EditPortfolio($id)
+    {
+        $portfolios = Portfolio::find($id);
+        return view('admin.portfolio.edit', compact('portfolios'));
+    }
+
+    public function Updateportfolio(Request $request, $id)
+    {
+
+        //Assigning unique ID to portfolio image
+        $old_image = $request->old_image;
+        $image = $request->file('image');
+        $name = $request->name;
+        $link = $request->link;
+        $task = $request->task;
+        $result = $request->result;
+
+        //Function to update name, task, result and image
+        if ($image) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/portfolio/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Portfolio::find($id)->update([
+                'name' => $request->name,
+                'link' => $request->link,
+                'task' => $request->task,
+                'result' => $request->result,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+
+        //Function to update name, task and image
+        if ($image && $name && $task) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/portfolio/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Portfolio::find($id)->update([
+                'name' => $request->name,
+                'task' => $request->task,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+
+        //Function to update name, result and image
+        if ($image && $result && $task) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/portfolio/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Portfolio::find($id)->update([
+                'name' => $request->name,
+                'result' => $request->result,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+
+        //Function to update tittle & image
+        elseif ($image && $name) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/portfolio/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Portfolio::find($id)->update([
+                'name' => $request->name,
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+
+        //Function to update task & image
+        elseif ($image && $task) {
+            $image_id_generator = hexdec(uniqid());
+            $image_extension = strtolower($image->getClientOriginalExtension());
+            $image_name = $image_id_generator . '.' . $image_extension;
+            $up_location = 'image/portfolio/';
+            $final_image = $up_location . $image_name;
+            $image->move($up_location, $image_name);
+            unlink($old_image);
+
+            Portfolio::find($id)->update([
+                'image' => $final_image,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+
+        //Function to update name or task or result or link
+        elseif ($name && $task && $result && $link) {
+            Portfolio::find($id)->update([
+                'name' => $request->name,
+                'link' => $request->link,
+                'task' => $request->task,
+                'result' => $request->result,
+                'created_at' => Carbon::now()
+            ]);
+
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+
+        //Function to update portfolio name only 
+        else {
+            Portfolio::find($id)->update([
+                'name' => $request->name,
+                'created_at' => Carbon::now()
+            ]);
+            return Redirect()->back()->with('success', 'portfolio updated successfully!');
+        }
+    }
+
+    public function Deleteportfolio($id)
+    {
+        $image = Portfolio::find($id);
+        $old_image = $image->image;
+        unlink($old_image);
+
+        Portfolio::find($id)->delete();
+        return Redirect()->back()->with('success', 'Portfolio deleted successfully!');
     }
 }

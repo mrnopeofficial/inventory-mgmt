@@ -9,18 +9,31 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>About Me</strong></h2>
+            <h2>My Skill</strong></h2>
         </div>
 
+        <!-- Chart  -->
         <div class="row content">
-            <div class="col-lg-6" data-aos="fade-right">
-                <h2>{{$abouts->title}}</h2>
-                <h3>{{$abouts->short_desc}}</h3>
+            <canvas id="doChart"></canvas>
+        </div>
+        <a href="https://drive.google.com/file/d/1VWr3zNfy53GUEsosvOiSGW138dMg0rbP/view?usp=sharing" target="_blank" class="pb-5 d-block text-center text-muted"><i class="mdi mdi-download mr-2"></i> Download resume</a>
+        <div class="card-footer d-flex flex-wrap bg-white p-0">
+            <div class="col-6">
+                <div class="py-4 px-4">
+                    <ul class="d-flex flex-column justify-content-between">
+                        <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle mr-2" style="color: #4c84ff"></i>Web Development</li>
+                        <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle mr-2" style="color: #80e1c1 "></i>Handling Client</li>
+                        <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle mr-2" style="color: #8061ef "></i>Solving Problem</li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
-                <p>
-                    {{$abouts->long_desc}}
-                </p>
+            <div class="col-6 border-left">
+                <div class="py-4 px-4 ">
+                    <ul class="d-flex flex-column justify-content-between">
+                        <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle mr-2" style="color: #ffa128"></i>Software Testing</li>
+                        <li><i class="mdi mdi-checkbox-blank-circle mr-2" style="color: #f51b4a"></i>Content Development</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -43,13 +56,13 @@
 
         <div class="row portfolio-container" data-aos="fade-up">
 
-            @foreach($multipics as $pics)
+            @foreach($portfolios as $portfolio)
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <img src="{{$pics->image}}" class="img-fluid" alt="">
+                <img src="{{$portfolio->image}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
-                    <h4>App 1</h4>
-                    <p>App</p>
-                    <a href="{{$pics->image}}" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                    <h4>{{$portfolio->name}}</h4>
+                    <p>Website</p>
+                    <a href="{{$portfolio->image}}" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" class="details-link" title="More Details"></a>
                 </div>
             </div>
@@ -60,26 +73,4 @@
     </div>
 </section><!-- End Portfolio Section -->
 
-<!-- ======= Our Brand Section ======= -->
-<section id="clients" class="clients">
-    <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2>Brands</h2>
-        </div>
-
-        <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
-
-            @foreach($brands as $brand)
-            <div class="col-lg-3 col-md-4 col-6">
-                <div class="client-logo">
-                    <img src="{{$brand->brand_image}}" class="img-fluid" alt="">
-                </div>
-            </div>
-            @endforeach
-
-        </div>
-
-    </div>
-</section><!-- End Our Clients Section -->
 @endsection

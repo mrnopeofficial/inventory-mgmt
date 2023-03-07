@@ -9,7 +9,7 @@
                         <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                     </g>
                 </svg>
-                <span class="brand-name">Inventorium </span>
+                <span class="brand-name">IamSyahmi </span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -18,12 +18,12 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
 
-                <li class="has-sub">
+                <li class="has-sub expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Home</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
+                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
                         <div class="sub-menu">
 
                             <li>
@@ -40,15 +40,8 @@
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="{{route('multi.image')}}">
+                                <a class="sidenav-item-link" href="{{route('admin.portfolio')}}">
                                     <span class="nav-text">Portfolio</span>
-
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="sidenav-item-link" href="{{route('all.brand')}}">
-                                    <span class="nav-text">Brand</span>
 
                                 </a>
                             </li>

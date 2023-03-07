@@ -44,7 +44,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Update Passion Story</label>
                                 <textarea type="text" name="story" class="form-control" id="exampleFormControlTextarea1" rows="5">{{ $passions->story }}</textarea>
-                                @error('description')
+                                @error('story')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>

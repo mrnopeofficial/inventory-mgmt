@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
-use App\Models\User;
-use App\Models\Service;
 use App\Models\Passion;
-use App\Models\Multipic;
+use App\Models\Portfolio;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -17,8 +14,8 @@ class UserController extends Controller
 {
     public function Portfolio()
     {
-        $multipics = Multipic::all();
-        return view('pages.portfolio', compact('multipics'));
+        $portfolios = Portfolio::all();
+        return view('pages.portfolio', compact('portfolios'));
     }
 
     public function PassionDetail($id) {

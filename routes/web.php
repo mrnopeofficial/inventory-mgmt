@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 //Need to add this file if using Eloquent
 use App\Models\User;
 use App\Models\Brand;
-use App\Models\Multipic;
+use App\Models\Portfolio;
 
 //Need to add this file if using query builder
 use Illuminate\Support\Facades\DB;
@@ -18,23 +18,13 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
     $abouts = DB::table('abouts')->first();
-    $multipics = Multipic::all();
-    return view('home', compact('brands','abouts','multipics'));
-});
-
-Route::get('/home', function () {
-    echo "This is home page";
-    //return view('welcome');
+    $portfolios = Portfolio::all();
+    return view('home', compact('brands','abouts','portfolios'));
 });
 
 Route::get('/about', function () {
     return view('about');
 });
-// ->middleware('check');
-
-//Laravel 7 method
-// Route::get('/contact', 'ContactController@index');
-// Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/contact', [ContactController::class, 'index'])->name('con');
 
@@ -44,39 +34,22 @@ Route::get('/email/verify', function () {
 
 // CATEGORY CONTROLLER (ROUTE)
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
-
-// Add Category Controller (Route)
 Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('add.category');
-
-// Edit Category Controller (Route)
 Route::get('/category/edit/{id}', [CategoryController::class, 'Edit']);
-
-// Update Category Controller (Route)
 Route::post('/category/update/{id}', [CategoryController::class, 'Update']);
-
-// Soft Delete Category Controller (Route)
 Route::get('/category/softdelete/{id}', [CategoryController::class, 'SoftDelete']);
-
-// Restore Category Controller (Route)
 Route::get('/category/restore/{id}', [CategoryController::class, 'Restore']);
-
-// Restore Category Controller (Route)
 Route::get('/category/delete/{id}', [CategoryController::class, 'Delete']);
 
 // BRAND CONTROLLER (ROUTE)
 Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
-// Add Brand Controller (Route)
 Route::post('/brand/add', [BrandController::class, 'AddBrand'])->name('add.brand');
-// Edit Brand Controller (Route)
 Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']);
-// Update Brand Controller (Route)
 Route::post('/brand/update/{id}', [BrandController::class, 'Update']);
-// Soft Delete Category Controller (Route)
 Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 
 // MULTI IMAGE CONTROLLER (ROUTE)
 Route::get('/multi/image', [BrandController::class, 'MultiPic'])->name('multi.image');
-// Add Multi Image Controller (Route)
 Route::post('/multi/add', [BrandController::class, 'AddImage'])->name('add.image');
 
 Route::get('/help', function () {
@@ -103,7 +76,6 @@ Route::middleware([
 Route::get('/portfolio', [UserController::class, 'Portfolio'])->name('portfolio');
 
 // SERVICE CONTROLLER (ROUTE)
-// Route::get('/passion', [UserController::class, 'Passion'])->name('passion');
 Route::get('/passion/detail/{id}', [UserController::class, 'PassionDetail']);
 
 // CONTACT CONTROLLER (ROUTE)
@@ -135,6 +107,14 @@ Route::post('passion/store', [AdminController::class, 'StorePassion'])->name('st
 Route::get('/passion/edit/{id}', [AdminController::class, 'EditPassion']);
 Route::post('/passion/update/{id}', [AdminController::class, 'UpdatePassion']);
 Route::get('passion/delete/{id}', [AdminController::class, 'DeletePassion']);
+
+//Portfolio
+Route::get('/dashboard/portfolio', [AdminController::class, 'AdminPortfolio'])->name('admin.portfolio');
+Route::get('/portfolio/add', [AdminController::class, 'AddPortfolio'])->name('add.portfolio');
+Route::post('portfolio/store', [AdminController::class, 'StorePortfolio'])->name('store.portfolio');
+Route::get('/portfolio/edit/{id}', [AdminController::class, 'EditPortfolio']);
+Route::post('/portfolio/update/{id}', [AdminController::class, 'UpdatePortfolio']);
+Route::get('portfolio/delete/{id}', [AdminController::class, 'DeletePortfolio']);
 
 //Service
 Route::get('/dashboard/service', [AdminController::class, 'AdminService'])->name('admin.service');

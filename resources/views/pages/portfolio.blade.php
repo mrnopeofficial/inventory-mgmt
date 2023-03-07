@@ -28,13 +28,13 @@
 
     <div class="row portfolio-container" data-aos="fade-up">
 
-        @foreach($multipics as $pics)
+        @foreach($portfolios as $portfolio)
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <img src="{{$pics->image}}" class="img-fluid" alt="">
+                <img src="{{$portfolio->image}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
-                    <h4>App 1</h4>
-                    <p>App</p>
-                    <a href="{{$pics->image}}" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                    <h4>{{$portfolio->name}}</h4>
+                    <p>Website</p>
+                    <a href="{{$portfolio->image}}" data-gall="portfolioGallery" class="venobox preview-link"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" class="details-link" title="More Details"></a>
                 </div>
         </div>
