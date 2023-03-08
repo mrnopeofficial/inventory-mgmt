@@ -64,7 +64,7 @@
                     <!-- search form -->
                     <div class="search-form d-none d-lg-inline-block">
                         <div class="input-group">
-                            <a href="http://127.0.0.1:8000/" target="_blank"><button class="btn-dark rounded" style="padding:5px 10px;">Home Page</button></a>
+                            <a href="http://iamsyahmi.com/" target="_blank"><button class="btn-dark rounded" style="padding:5px 10px;">Home Page</button></a>
                             <button type="button" name="search" id="search-btn" class="btn btn-flat"></button>
                             <input type="hidden" name="query" id="search-input" class="form-control" />
                         </div>

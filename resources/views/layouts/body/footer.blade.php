@@ -19,7 +19,7 @@
                 <div class="col-lg-4 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="http://127.0.0.1:8000">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="http://iamsyahmi.com">Home</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#about-us">My Skill</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{route('portfolio')}}">Portfolio</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{route('contact')}}">Contact</a></li>

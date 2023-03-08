@@ -10,7 +10,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <h2>Portfolio</h2>
         <ol>
-          <li><a href="http://127.0.0.1:8000">Home</a></li>
+          <li><a href="http://iamsyahmi.com">Home</a></li>
           <li>Portfolio</li>
         </ol>
       </div>

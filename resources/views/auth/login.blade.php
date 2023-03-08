@@ -51,7 +51,7 @@
                 <div class="card">
                     <div class="card-header" style="background-color: #6f42c1;">
                         <div class="app-brand" style="background-color: #6f42c1;">
-                            <a href="http://127.0.0.1:8000/">
+                            <a href="http://iamsyahmi.com/">
                             <img src="{{asset('frontend/assets/img/favicon.png')}}">
                                 <span class="brand-name">IamSyahmi</span>
                             </a>

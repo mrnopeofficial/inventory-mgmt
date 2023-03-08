@@ -4,12 +4,12 @@
 
         <!-- <h1 class="logo mr-auto"><a href="./"><span>I</span>am<span>SYAHMI</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="http://127.0.0.1:8000" class="logo mr-auto"><img src="{{asset('frontend/assets/img/apple-touch-icon.png')}}" alt="" class="img-fluid"></a>
+        <a href="http://iamsyahmi.com" class="logo mr-auto"><img src="{{asset('frontend/assets/img/apple-touch-icon.png')}}" alt="" class="img-fluid"></a>
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li><a href="http://127.0.0.1:8000">Home</a></li>
-                <li><a href="http://127.0.0.1:8000/#about-us">My Skill</a></li>
+                <li><a href="http://iamsyahmi.com">Home</a></li>
+                <li><a href="http://iamsyahmi.com/#about-us">My Skill</a></li>
                 <li><a href="{{route('portfolio')}}">Portfolio</a></li>
                 <li><a href="{{route('contact')}}">Contact</a></li>
 
