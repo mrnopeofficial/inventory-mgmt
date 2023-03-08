@@ -1,19 +1,14 @@
 <aside class="left-sidebar bg-sidebar">
     <div id="sidebar" class="sidebar sidebar-with-footer">
         <!-- Aplication Brand -->
-        <div class="app-brand">
+        <div class="app-brand" style="background-color: #6f42c1;">
             <a href="/dashboard">
-                <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33" viewBox="0 0 30 33">
-                    <g fill="none" fill-rule="evenodd">
-                        <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-                        <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-                    </g>
-                </svg>
+                <img src="{{asset('frontend/assets/img/favicon.png')}}" alt="customer image">
                 <span class="brand-name">IamSyahmi </span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
-        <div class="sidebar-scrollbar">
+        <div class="sidebar-scrollbar" style="background-color: #3e266b;">
 
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
@@ -24,7 +19,7 @@
                         <span class="nav-text">Home</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
+                        <div class="sub-menu" style="background-color: #37225e">
 
                             <li>
                                 <a class="sidenav-item-link" href="{{route('admin.passion')}}">
@@ -56,7 +51,7 @@
                         <span class="nav-text">Contact</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="ui-elements" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
+                        <div class="sub-menu" style="background-color: #37225e;">
 
                             <li>
                                 <a class="sidenav-item-link" href="{{route('admin.contact')}}">
@@ -80,9 +75,7 @@
 
         </div>
 
-        <hr class="separator" />
-
-        <div class="sidebar-footer">
+        <div class="sidebar-footer" style="background-color: #3e266b;">
             <div class="sidebar-footer-content">
                 <h6 class="text-uppercase">
                     Powered by mrnopeofficial

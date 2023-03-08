@@ -30,13 +30,13 @@
 
         @foreach($portfolios as $portfolio)
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <a href="{{url('portfolio/detail/'.$portfolio->id)}}">
                 <img src="{{$portfolio->image}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                     <h4>{{$portfolio->name}}</h4>
                     <p>Website</p>
-                    <a href="{{$portfolio->image}}" data-gall="portfolioGallery" class="venobox preview-link"><i class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" class="details-link" title="More Details"></a>
                 </div>
+                </a>
         </div>
         @endforeach
 

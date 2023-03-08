@@ -49,16 +49,11 @@
         <div class="row justify-content-center mt-5">
             <div class="col-xl-5 col-lg-6 col-md-10">
                 <div class="card">
-                    <div class="card-header bg-primary">
-                        <div class="app-brand">
+                    <div class="card-header" style="background-color: #6f42c1;">
+                        <div class="app-brand" style="background-color: #6f42c1;">
                             <a href="http://127.0.0.1:8000/">
-                                <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33" viewBox="0 0 30 33">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-                                        <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-                                    </g>
-                                </svg>
-                                <span class="brand-name">Inventorium</span>
+                            <img src="{{asset('frontend/assets/img/favicon.png')}}">
+                                <span class="brand-name">IamSyahmi</span>
                             </a>
                         </div>
                     </div>
@@ -71,7 +66,6 @@
                     </div>
                     @endif
                     <div class="card-body p-5">
-
                         <h4 class="text-dark mb-5">Sign In</h4>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -91,12 +85,9 @@
                                             </label>
 
                                         </div>
-                                        <p><a class="text-blue" href="{{ route('password.request') }}">Forgot Your Password?</a></p>
+                                        <p><a style="color:#6f42c1;"  href="{{ route('password.request') }}">Forgot Your Password?</a></p>
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
-                                    <p>Don't have an account yet ?
-                                        <a class="text-blue" href="{{ route('register') }}">Sign Up</a>
-                                    </p>
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block mb-4" style="background-color: #6f42c1; border-color:#6f42c1">Sign In</button>
                                 </div>
                             </div>
                         </form>
@@ -105,8 +96,8 @@
             </div>
         </div>
         <div class="copyright pl-0">
-            <p class="text-center">&copy; 2022 Copyright Inventorium by
-                <a class="text-primary" href="https://github.com/mrnopeofficial/" target="_blank">Mr Nope</a>.
+            <p class="text-center">&copy; 2023 Copyright IamSyahmi by
+                <a style="color:#6f42c1;" href="https://github.com/mrnopeofficial/" target="_blank">Mr Nope.</a>
             </p>
         </div>
     </div>

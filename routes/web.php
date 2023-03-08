@@ -74,8 +74,9 @@ Route::middleware([
 
 // PORTFOLIO CONTROLLER (ROUTE)
 Route::get('/portfolio', [UserController::class, 'Portfolio'])->name('portfolio');
+Route::get('/portfolio/detail/{id}', [UserController::class, 'PortfolioDetail']);
 
-// SERVICE CONTROLLER (ROUTE)
+// PASSION CONTROLLER (ROUTE)
 Route::get('/passion/detail/{id}', [UserController::class, 'PassionDetail']);
 
 // CONTACT CONTROLLER (ROUTE)

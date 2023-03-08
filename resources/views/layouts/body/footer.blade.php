@@ -42,10 +42,7 @@
 
         <div class="mr-md-auto text-center text-md-left">
             <div class="copyright">
-                &copy; Copyright <strong><span>Mr Nope</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                Designed by <a href="./">Himself</a>
+                &copy; Copyright <strong><span>Mr Nope</span></strong>. All Rights Reserved.
             </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">

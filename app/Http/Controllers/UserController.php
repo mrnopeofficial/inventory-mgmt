@@ -18,6 +18,12 @@ class UserController extends Controller
         return view('pages.portfolio', compact('portfolios'));
     }
 
+    public function PortfolioDetail($id)
+    {
+        $portfolios = Portfolio::find($id);
+        return view('pages.portfolio-detail', compact('portfolios'));
+    }
+
     public function PassionDetail($id) {
         $passions = Passion::find($id);
         return view('pages.passion-detail',compact('passions'));
