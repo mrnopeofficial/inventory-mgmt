@@ -54,23 +54,23 @@
           <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up">
 
             <div class="progress">
-              <span class="skill">php 8<i class="val">60%</i></span>
+              <span class="skill">php 8<i class="val">Intermediate</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
               </div>
             </div>
 
             <div class="progress">
-              <span class="skill">Laravel 10<i class="val">50%</i></span>
+              <span class="skill">Laravel 10<i class="val">Intermediate</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
               </div>
             </div>
 
             <div class="progress">
-              <span class="skill">Bootstrap 5<i class="val">50%</i></span>
+              <span class="skill">Bootstrap 5<i class="val">Intermediate</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
               </div>
             </div>
 
@@ -79,23 +79,23 @@
           <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
             <div class="progress">
-              <span class="skill">Trello <i class="val">70%</i></span>
+              <span class="skill">Trello <i class="val">Intermediate</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
               </div>
             </div>
 
             <div class="progress">
-              <span class="skill">Gitlab <i class="val">40%</i></span>
+              <span class="skill">Gitlab <i class="val">Intermediate</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
               </div>
             </div>
 
             <div class="progress">
-              <span class="skill">Digital Ocean <i class="val">30%</i></span>
+              <span class="skill">Digital Ocean <i class="val">Beginner</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div>
               </div>
             </div>
 
