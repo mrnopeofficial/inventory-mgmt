@@ -46,4 +46,9 @@ class UserController extends Controller
         ]);
         return Redirect()->route('contact')->with('success', 'Your message sent successfully!');
     }
+
+    public function Love()
+    {
+        return view('pages.sls');
+    }
 }

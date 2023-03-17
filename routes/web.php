@@ -83,6 +83,9 @@ Route::get('/passion/detail/{id}', [UserController::class, 'PassionDetail']);
 Route::get('/contact', [UserController::class, 'Contact'])->name('contact');
 Route::post('contact/form', [UserController::class, 'StoreContactForm'])->name('contact.form');
 
+// LOVE CONTROLLER (ROUTE)
+Route::get('/sls', [UserController::class, 'Love']);
+
 // ADMIN DASHBOARD CONTROLLER (ROUTE)
 
 //Slider

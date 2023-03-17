@@ -59,6 +59,7 @@
     <!-- Chart Files -->
     <script src="{{asset('backend/assets/js/sleek.js')}}"></script>
     <script src="{{asset('backend/assets/js/chart.js')}}"></script>
+    <script src="{{asset('backend/assets/js/love.js')}}"></script>
     <script src="{{asset('backend/assets/plugins/charts/Chart.min.js')}}"></script>
     <script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
